@@ -101,12 +101,14 @@ public class BattleshipArena {
 			Ship shotship = isHit(location);
 			if (isHit(location) == null) {
 				xySpace[location.getX()][location.getY()] = 'N';
+				System.out.println("missed");
 				drawArena();
 			}
 			else {
 				xySpace[location.getX()][location.getY()] = 'X';
 		        int damage = (int) calculateHitDemage(shotship);
 		        shotship.reduceHealth(damage);
+		        System.out.println("Hit the ship has " + shotship.getHealth() + " percent health left. Is ship alive: " + shotship.isAlive());
 		        drawArena();
 			}
             

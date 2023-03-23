@@ -11,8 +11,6 @@ public class BattleshipSimulationEngine {
 
 	private boolean status;
 	private BattleshipArena arena = new BattleshipArena(30, 30);
-	private Ship ship1 = new Ship("Sedef Kalkavan", 2, 2);
-	private Ship ship2 = new Ship("Alp Bustos", 2, 2);
 	Scanner input = new Scanner (System.in);
     
     /*
@@ -44,12 +42,9 @@ public class BattleshipSimulationEngine {
 	// TODO: init enviroment add one ship
 	public BattleshipSimulationEngine init() {
 		status = true;
-		//BattleshipArena arena = new BattleshipArena(40, 40);
-		//Ship ship1 = new Ship("Sedef Kalkavan", 2, 2);
+		Ship ship1 = new Ship("ship1", 2, 1);
 		Location loc1 = new Location(2, 2);
-		Location loc2 = new Location(15, 15);
 		arena.addShip(ship1, loc1);
-		arena.addShip(ship2, loc2);
 		arena.drawArena();
 		return this;
 	}
