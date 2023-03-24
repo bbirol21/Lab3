@@ -100,9 +100,10 @@ public class BattleshipArena {
 		if (isLocationsValid(location)) {
 			Ship shotship = isHit(location);
 			if (isHit(location) == null) {
-				xySpace[location.getX()][location.getY()] = 'N';
-				System.out.println("missed");
-				drawArena();
+				return;
+//				xySpace[location.getX()][location.getY()] = 'N';
+//				System.out.println("missed");
+//				drawArena();
 			}
 			else {
 				xySpace[location.getX()][location.getY()] = 'X';
@@ -184,6 +185,17 @@ public class BattleshipArena {
 	public Ship[] getShipList() {
 		return shipList;
 	}
+
+
+	public int getXlength() {
+		return xlength;
+	}
+
+
+	public int getYlength() {
+		return ylength;
+	}
+
 	
 
 }

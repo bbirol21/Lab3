@@ -1,5 +1,6 @@
 package simulationengine;
 
+import java.security.SecureRandom;
 import java.util.Scanner;
 
 import models.BattleshipArena;
@@ -10,8 +11,9 @@ import models.Ship;
 public class BattleshipSimulationEngine {
 
 	private boolean status;
-	private BattleshipArena arena = new BattleshipArena(30, 30);
 	Scanner input = new Scanner (System.in);
+	SecureRandom rnd = new SecureRandom();
+	BattleshipArena arena = new BattleshipArena(30, 30);
     
     /*
         As you know "this" keywod corresponds to the current object.
@@ -42,9 +44,17 @@ public class BattleshipSimulationEngine {
 	// TODO: init enviroment add one ship
 	public BattleshipSimulationEngine init() {
 		status = true;
-		Ship ship1 = new Ship("ship1", 2, 1);
-		Location loc1 = new Location(2, 2);
-		arena.addShip(ship1, loc1);
+//		Ship ship1 = new Ship("ship1", rnd.nextInt(6), rnd.nextInt(6));
+//		Location loc1 = new Location(rnd.nextInt(arena.getXlength()), rnd.nextInt(arena.getYlength()));
+//		arena.addShip(ship1, loc1);
+		
+		for (int i = 0; i<rnd.nextInt(6); i++) {
+			
+			Ship ship1 = new Ship("ship1", rnd.nextInt(6), rnd.nextInt(6));
+			Location loc1 = new Location(rnd.nextInt(arena.getXlength()), rnd.nextInt(arena.getYlength()));
+			arena.addShip(ship1, loc1);
+		}
+		
 		arena.drawArena();
 		return this;
 	}
@@ -65,10 +75,14 @@ public class BattleshipSimulationEngine {
 	// TODO: implement this method
 	public BattleshipSimulationEngine update() {
 		
-		System.out.println("X Location to Fire: ");
-		int x = input.nextInt();
-		System.out.println("Y Location to Fire: ");
-		int y = input.nextInt();
+//		System.out.println("X Location to Fire: ");
+//		int x = input.nextInt();
+//		
+//		System.out.println("Y Location to Fire: ");
+//		int y = input.nextInt();
+		
+		int x = rnd.nextInt(arena.getXlength());
+		int y = rnd.nextInt(arena.getYlength());
 		
 		Location loc = new Location(x,y);
 		arena.attack(loc);
